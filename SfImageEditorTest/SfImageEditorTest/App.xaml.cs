@@ -1,4 +1,5 @@
 ﻿using System;
+using Plugin.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace SfImageEditorTest
         public App()
         {
             InitializeComponent();
-
+            CrossMedia.Current.Initialize();
             MainPage = new MainPage();
         }
 
