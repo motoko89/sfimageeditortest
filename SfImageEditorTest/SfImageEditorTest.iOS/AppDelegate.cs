@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.SfImageEditor.XForms.iOS;
 using UIKit;
 
 namespace SfImageEditorTest.iOS
@@ -24,6 +25,7 @@ namespace SfImageEditorTest.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            SfImageEditorRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

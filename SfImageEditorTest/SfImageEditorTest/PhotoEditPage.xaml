@@ -1,5 +1,28 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SfImageEditorTest.PhotoEditPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SfImageEditorTest.PhotoEditPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:ie="clr-namespace:Syncfusion.SfImageEditor.XForms;assembly=Syncfusion.SfImageEditor.XForms"
+             ios:Page.UseSafeArea="true">
+    <Grid
+            RowSpacing="0"
+            ColumnSpacing="0"
+        Margin="0,0,0,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ie:SfImageEditor x:Name="IPEditor"
+                          ImageSaving="Handle_ImageSaving" />
+        <Button Clicked="SavePhoto_OnClicked"
+                       x:Name="SaveButton"
+                       Text="Save"
+                       Grid.Row="1"
+                       Margin="15,0,15,0"
+                        />
+    </Grid>
 </ContentPage>
