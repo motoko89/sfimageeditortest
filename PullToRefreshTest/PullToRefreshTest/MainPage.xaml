@@ -1,7 +1,125 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:PullToRefreshTest" x:Class="PullToRefreshTest.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PullToRefreshTest"
+             x:Class="PullToRefreshTest.MainPage"
+             xmlns:ptr="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
+             xmlns:sf="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:vm="clr-namespace:PullToRefreshTest.ViewModels;assembly=PullToRefreshTest"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             Title="PTR">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ptr:SfPullToRefresh
+            Grid.RowSpan="2"
+            ProgressStrokeColor="Red"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            Refreshing="InspectionsList_Refreshing">
+            <ptr:SfPullToRefresh.PullableContent>
+                <sf:SfListView
+                    x:Name="InspectionList"
+                    ItemSpacing="0"
+                    ItemsSource="{Binding Inspections}"
+                    SelectionMode="SingleDeselect"
+                    Margin="0,15,0,0"
+                    SelectedItem="{Binding SelectedInspection, Mode=TwoWay}"
+                    SelectionBackgroundColor="Lime"
+                    FooterSize="100"
+                    LoadMoreOption="Auto"
+                    LoadMoreCommand="{Binding LoadMoreInspectionsCommand}"
+                    LoadMoreCommandParameter="{Binding Source={x:Reference InspectionList}}"
+                    LoadMorePosition="Bottom"
+                    AutoFitMode="Height"
+                    >
+                    <sf:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="15,0,15,0"
+                                      ColumnSpacing="0"
+                                      RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto">
+                                        </RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Vertical"
+                                         Spacing="0"
+                                         Grid.Column="1"
+                                         Margin="10,10,0,0"
+                                         VerticalOptions="Start">
+                                        <Label Text="{Binding Description}"
+                                               LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </sf:SfListView.ItemTemplate>
+                    <sf:SfListView.FooterTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                Margin="15,0,15,0"
+                                Orientation="Vertical"
+                                Spacing="0">
+                                <Label Text="FooterText"
+                                    LineBreakMode="WordWrap"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="Red"
+                                    Margin="0,10,0,0">
+                                </Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </sf:SfListView.FooterTemplate>
+                    <sf:SfListView.LoadMoreTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="30" WidthRequest="30">
+                                <sf:LoadMoreIndicator
+                                    IsRunning="{Binding IsBusy, Source={x:Reference Name=InspectionList}}"
+                                    IsVisible="{Binding IsBusy, Source={x:Reference Name=InspectionList}}"
+                                    Color="Red"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    HeightRequest="30" WidthRequest="30"/>                             
+                            </Grid>
+                        </DataTemplate>
+                    </sf:SfListView.LoadMoreTemplate>
+                </sf:SfListView>
+            </ptr:SfPullToRefresh.PullableContent>
+        </ptr:SfPullToRefresh>
+        <Grid
+            Grid.Row="2"
+            Margin="15,0,15,15"
+            RowSpacing="0"
+            ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button 
+                           BackgroundColor="Green"
+                Text="Left"
+                           Margin="0,0,5,0" />
+            <Button Text="Right"
+                           Grid.Column="1"
+                           BackgroundColor="Green"
+                           Margin="5,0,0,0" />
+        </Grid>
+    </Grid>
 </ContentPage>
