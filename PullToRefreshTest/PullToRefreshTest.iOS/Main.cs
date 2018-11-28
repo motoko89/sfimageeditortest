@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace SfImageEditorTest.iOS
+namespace PullToRefreshTest.iOS
 {
     public class Application
     {

@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F634E2C6-1268-4E51-ABD1-C94271CA6EF9}</ProjectGuid>
+    <ProjectGuid>{FEB84AA1-A4E0-4939-B081-C008FFCC8D58}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SfImageEditorTest.iOS</RootNamespace>
+    <RootNamespace>PullToRefreshTest.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>SfImageEditorTest.iOS</AssemblyName>
+    <AssemblyName>PullToRefreshTest.iOS</AssemblyName>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -148,22 +148,13 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
-    <PackageReference Include="Xam.Plugin.Media">
-      <Version>4.0.1.5</Version>
-    </PackageReference>
-    <PackageReference Include="Plugin.Permissions">
-      <Version>3.0.0.12</Version>
-    </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfImageEditor">
-      <Version>16.3.0.29</Version>
-    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\SfImageEditorTest\SfImageEditorTest.csproj">
-      <Project>{D9C64790-FCC5-404A-A3AC-901DF227E435}</Project>
-      <Name>SfImageEditorTest</Name>
+    <ProjectReference Include="..\PullToRefreshTest\PullToRefreshTest.csproj">
+      <Project>{04272B1E-7C16-4AB2-A67D-628F6821209F}</Project>
+      <Name>PullToRefreshTest</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

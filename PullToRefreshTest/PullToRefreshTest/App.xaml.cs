@@ -1,18 +1,17 @@
 ﻿using System;
-using Plugin.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace SfImageEditorTest
+namespace PullToRefreshTest
 {
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
-            CrossMedia.Current.Initialize();
-            MainPage = new NavigationPage(new MainPage());
+
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
