@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfPullToRefresh.XForms.iOS;
 using UIKit;
 
 namespace PullToRefreshTest.iOS
@@ -23,6 +25,8 @@ namespace PullToRefreshTest.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfListViewRenderer.Init();
+            SfPullToRefreshRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
